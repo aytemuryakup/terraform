@@ -3,7 +3,7 @@
 ## Contents
 
 * [Azure VM Instance](https://github.com/aytemuryakup/terraform/tree/main/az_vm "Azure VM Instance")
-* [Azure Multi VM Instance](https://github.com/aytemuryakup/terraform/tree/main/az__multi_vm "Azure VM Instance")
+* [Azure Multi VM Instance](https://github.com/aytemuryakup/terraform/tree/main/az_multi_vm "Azure VM Instance")
 
 ### General Usage
 
