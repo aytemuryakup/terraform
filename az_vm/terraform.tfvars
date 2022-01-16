@@ -1,0 +1,8 @@
+resource_group_name         = "devlab"
+resource_group_location     = "Germany West Central"
+virtual_network_name        = "vnetdev"
+subnet_name                 = "subnetdev"
+public_ip_name              = "publicipdev"
+network_security_group_name = "nsgrpdev"
+network_interface_name      = "nicdev"
+linux_virtual_machine_name  = "master"

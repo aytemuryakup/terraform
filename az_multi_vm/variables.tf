@@ -26,10 +26,6 @@ variable "username" {
   description = "Enter admin username to SSH into Linux VMs"
 }
 
-variable "password" {
-  description = "Enter admin password to SSH into VMs"
-}
-
 variable "vm_size" {
   default = "Standard_B2s"
 }
