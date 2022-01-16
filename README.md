@@ -4,6 +4,7 @@
 
 * [Azure VM Instance](https://github.com/aytemuryakup/terraform/tree/main/az_vm "Azure VM Instance")
 * [Azure Multi VM Instance](https://github.com/aytemuryakup/terraform/tree/main/az_multi_vm "Azure VM Instance")
+* [Azure AKS Cluster Instance](https://github.com/aytemuryakup/terraform/tree/main/az_aks "Azure AKS Cluster Instance")
 
 ### General Usage
 
