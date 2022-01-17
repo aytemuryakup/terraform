@@ -153,23 +153,27 @@ resource "azurerm_linux_virtual_machine" "linux-vm" {
     timeout     = "1m"
   }
 
+  provisioner "file" {
+    source      = "./ssh-login.pem"
+    destination = "/home/${var.username}/ssh-login.pem"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo ufw disable",
       "sudo apt-get -y update",
       "sudo apt-get install -y python3-pip",
       "sudo apt-get install sshpass",
-      "sudo wget -P /opt https://github.com/kubernetes-sigs/kubespray/archive/refs/tags/v2.18.0.tar.gz",
-      "sudo tar -xzvf /opt/v2.18.0.tar.gz -C /opt",
-      "sudo rm -rf /opt/v2.18.0.tar.gz",
-      "sudo pip3 install -r /opt/kubespray-2.18.0/requirements.txt",
-      "sudo mkdir /opt/kubespray-2.18.0/inventory/labdev",
-      "sudo cp -a /opt/kubespray-2.18.0/inventory/sample/* /opt/kubespray-2.18.0/inventory/labdev/"
+      "wget -P $HOME https://github.com/kubernetes-sigs/kubespray/archive/refs/tags/v2.18.0.tar.gz",
+      "tar -xzvf $HOME/v2.18.0.tar.gz -C $HOME",
+      "rm -rf $HOME/v2.18.0.tar.gz",
+      "sudo pip3 install -r $HOME/kubespray-2.18.0/requirements.txt",
+      "mkdir $HOME/kubespray-2.18.0/inventory/labdev",
+      "cp -a $HOME/kubespray-2.18.0/inventory/sample/* $HOME/kubespray-2.18.0/inventory/labdev/",
+      "sudo cp /home/${var.username}/ssh-login.pem /home/${var.username}/kubespray-2.18.0/inventory/labdev",
+      "sudo chmod 400 /home/${var.username}/kubespray-2.18.0/inventory/labdev/ssh-login.pem",
+      "sudo chown ${var.username}:${var.username} /home/${var.username}/kubespray-2.18.0/inventory/labdev/ssh-login.pem"
     ]
-  }
-  provisioner "file" {
-    source      = "./ssh-login.pem"
-    destination = "/home/${var.username}/ssh-login.pem"
   }
 }
 
